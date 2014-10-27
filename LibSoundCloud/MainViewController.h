@@ -12,9 +12,10 @@
 @interface MainViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *txtSearchField;
+@property (strong, nonatomic) IBOutlet UITextField *userSearchField;
 @property (strong, nonatomic) IBOutlet UITextField *txtURLField;
-@property (nonatomic, retain) SoundCloud *soundCloud;
 
+@property (nonatomic, retain) SoundCloud *soundCloud;
 @property (nonatomic, retain) AVAudioPlayer *audioPlayer;
 
 @end

@@ -33,6 +33,7 @@
 
 -(NSMutableArray *) searchForTracksWithQuery: (NSString *) query;
 -(NSData *) downloadTrackData :(NSString *)songURL;
+-(void) searchForUser : (NSString *) user;
 -(NSMutableArray *) getUserTracks;
 -(BOOL) login;
 @end

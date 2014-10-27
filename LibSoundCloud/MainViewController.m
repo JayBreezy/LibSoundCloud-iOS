@@ -27,6 +27,13 @@
     [self.soundCloud searchForTracksWithQuery:self.txtSearchField.text];
     
 }
+
+
+-(IBAction)searchForUserClicked:(id)sender{
+    
+    [self.soundCloud searchForUser:self.userSearchField.text];
+}
+
 - (IBAction)btnStreamClicked:(id)sender {
     
    NSData *data =[self.soundCloud downloadTrackData:self.txtURLField.text];

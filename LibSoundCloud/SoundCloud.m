@@ -77,8 +77,6 @@
 }
 
 
-
-
 -(void) loginCallback :(NSString *) token
 {
     if(token !=nil)
@@ -92,6 +90,7 @@
 //Get list with full user tracks
 -(NSMutableArray *) getUserTracks {
     
+    
     NSString *jsonString =[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.soundcloud.com/me/tracks.json?oauth_token=%@",self.scToken]] encoding:NSUTF8StringEncoding error:nil];
     NSMutableArray *musicArray =[jsonString objectFromJSONString];
     NSMutableArray *returnArray = [[NSMutableArray alloc]init];
@@ -101,6 +100,7 @@
     for(int i=0; i< musicArray.count;i++)
     {
         NSMutableDictionary *result = [musicArray objectAtIndex:i];
+        
         if([[result objectForKey:@"kind" ] isEqualToString:@"track"])
         {
             [returnArray addObject:result];
@@ -110,6 +110,12 @@
     return returnArray;
 }
 
+-(void) searchForUser:(NSString *)user {
+    
+    NSString *userInfoString =[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.soundcloud.com/resolve.json?url=https://soundcloud.com/%@&client_id=%@",user,CLIENT_ID]] encoding:NSUTF8StringEncoding error:nil];
+    
+    NSLog(@"%@", userInfoString);
+}
 
 
 //Search for music with the given query

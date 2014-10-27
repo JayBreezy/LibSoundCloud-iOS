@@ -17,6 +17,8 @@
 
 #import "SoundCloud.h"
 #import "JSONKit.h"
+
+
 @implementation SoundCloud
 {
 
@@ -115,6 +117,35 @@
     NSString *userInfoString =[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.soundcloud.com/resolve.json?url=https://soundcloud.com/%@&client_id=%@",user,CLIENT_ID]] encoding:NSUTF8StringEncoding error:nil];
     
     NSLog(@"%@", userInfoString);
+    
+    NSDictionary *userInfoDict =[userInfoString objectFromJSONString];
+    
+    NSNumber * userId = [userInfoDict valueForKey: @"id"];
+    int ID = [userId intValue];
+    
+    NSLog(@"User ID is %i", ID);
+}
+
+-(NSMutableArray *) getTracksForUserID: (int) UserID{
+    
+    NSString *jsonString =[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.soundcloud.com/%i/tracks.json?oauth_token=%@", UserID, self.scToken]] encoding:NSUTF8StringEncoding error:nil];
+    NSMutableArray *musicArray =[jsonString objectFromJSONString];
+    NSMutableArray *returnArray = [[NSMutableArray alloc]init];
+    NSLog(@"%@",jsonString);
+    
+    self.scTrackResultList = [[NSMutableArray alloc]init];
+    for(int i=0; i< musicArray.count;i++)
+    {
+        NSMutableDictionary *result = [musicArray objectAtIndex:i];
+        
+        if([[result objectForKey:@"kind" ] isEqualToString:@"track"])
+        {
+            [returnArray addObject:result];
+        }
+    }
+    
+    return returnArray;
+
 }
 
 

@@ -19,7 +19,7 @@
 //Change these to your own apps values
 #define CLIENT_ID @"ab91a50019b2954d03cad204bd6ace99"
 #define CLIENT_SECRET @"f7e8588e40c22510686d80a198331774"
-#define REDIRECT_URI @"yourappname://oauth"//don't forget to change this in Info.plist as well
+#define REDIRECT_URI @"bounce://oauth2"//don't forget to change this in Info.plist as well
 
 #define SC_API_URL @"https://api.soundcloud.com"
 #define SC_TOKEN @"SC_TOKEN"

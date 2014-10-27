@@ -50,7 +50,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>yourappname</string>
+				<string>bounce://oauth2</string>
 			</array>
 		</dict>
 	</array>

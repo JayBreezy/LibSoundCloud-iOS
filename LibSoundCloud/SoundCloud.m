@@ -149,7 +149,7 @@
 //This can be directly played in an AVAudioPlayer without any modification
 -(NSData *) downloadTrackData :(NSString *)songURL {
     
-            NSData *data =[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@",songURL, self.scToken]]];
+            NSData *data =[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@",songURL, CLIENT_ID]]];
     
             return data;
             //NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
